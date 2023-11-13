@@ -1,0 +1,26 @@
+{
+    "name": "yosuite/synthetic-customfields",
+    "description": "Synthetiic-customfields is a laravel package for adding custom fields to your Laravel application.",
+    "version": "1.0.0",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SyntheticCustomFields\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "XpeedStudio"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SyntheticCustomFields\\SyntheticCustomFieldsProvider"
+            ],
+            "config": "config/synthetic-customfields.php"
+        }
+    }
+}
