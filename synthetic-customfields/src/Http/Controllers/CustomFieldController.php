@@ -36,10 +36,8 @@ class CustomFieldController extends Controller
         // $data = new Task();
         // $data = new Task();
         //dd(Task::$filterFields);
-        //return Task::filter()->get();
+        return Task::filter()->get();
         // $filterFields = array_merge(empty($data->fillable_attribute) ? [] : array_keys($data->fillable_attribute), array_keys($data->getCustomFieldStructureData()) ?? []);
         // return Task::filterFields($filterFields)->get();
-        $data = new Task();
-        return $data->fillable_attribute;
     }
 }

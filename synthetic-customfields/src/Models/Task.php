@@ -44,7 +44,7 @@ class Task extends Model
 
     public  function generateModelAttributes()
     {
-        $data = CustomField::where('model', 'SyntheticCustomFields\Models\Task')->project(['customfield_structure.columns' => 1])->get();
+        $data = CustomField::where('model', get_class($this))->project(['customfield_structure.columns' => 1])->get();
         $transformedData = $data->flatMap(function ($item) {
             return collect($item->customfield_structure['columns'])
                 ->mapWithKeys(function ($column) {
@@ -58,7 +58,7 @@ class Task extends Model
                         ]
                     ];
                 });
-        })->toArray() ?? [];
+        })->toArray();
         $this->fillable_attribute = array_merge($this->fillable_attribute, $transformedData);
         $this->filterFields = array_keys($this->fillable_attribute);
     }
