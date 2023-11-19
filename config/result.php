@@ -2,15 +2,12 @@
 
 return [
     [
-        "name" => "tag",
-        "value" => "Laravel"
+        "tag" => "Laravel",
     ],
     [
-        "name" => "assigned_to",
-        "value" => "Hussain Mahamud"
+        "assigned_to" => "Hussain",
     ],
     [
-        "name" => "comments",
-        "value" => "Lots of comments"
+        "comments" => "no comments",
     ]
 ];

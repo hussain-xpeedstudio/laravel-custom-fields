@@ -1,35 +1,38 @@
 <?php
 
 return [
-    'title' => 'Post Information',
-    'icon' => 'Profile',
-    'actionButton' => [
-        'label' => 'Edit',
-        'icon' => 'EditOutline',
-        'targetComponent' => 'Form',
-        'placement' => 'top',
+
+    'custom_field_data.tag' => [
+        'label' => 'Tags',
+        'type' => 'text',
+        'sorter' => true,
+        'optionsData' => null,
+        'isMultiSelect' => true,
+        'validation' => [
+            'default' => 'required|min:12',
+            'update' => ''
+        ]
     ],
-    'columns' =>  [
-        [
-            'label' => 'Tags',
-            'type' => 'text',
-            'name' => 'tag',
-            'shorter' => true,
-            'optionsData' => null,
-            'isMultiSelect' => true,
-        ],
-        [
-            'label' => 'Assigned To',
-            'type' => 'select',
-            'name' => 'assigned_to',
-            'shorter' => true,
-            'optionsData' => 'http://192.168.1.181:9000/module/people/post/relation/category/list',
-            'isMultiSelect' => true,
-        ],
-        [
-            'label' => 'Comments',
-            'type' => 'text',
-            'name' => 'comment',
+    'custom_field_data.assigned_to' => [
+        'label' => 'Assigned To',
+        'type' => 'select',
+        'sorter' => true,
+        'optionsData' => '',
+        'isMultiSelect' => true,
+        'validation' => [
+            'default' => '',
+            'update' => ''
+        ]
+    ],
+    'custom_field_data.comment' => [
+        'label' => 'Comments',
+        'type' => 'text',
+        'sorter' => true,
+        'optionsData' => '',
+        'isMultiSelect' => true,
+        'validation' => [
+            'default' => '',
+            'update' => ''
         ]
     ]
 ];

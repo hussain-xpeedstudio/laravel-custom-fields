@@ -81,7 +81,7 @@ return [
             'driver' => 'mongodb',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', 27017),
-            'database' => env('DB_DATABASE', 'note'),
+            'database' => env('DB_DATABASE', 'custom_field'),
             'username' => env('DB_USERNAME', 'mongoadmin'),
             'password' => env('DB_PASSWORD', 'mongoadmin'),
             'options' => [

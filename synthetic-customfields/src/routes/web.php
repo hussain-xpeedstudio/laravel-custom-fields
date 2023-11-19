@@ -6,4 +6,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('test', [CustomFieldController::class, 'index']);
 Route::get('/feedData', [CustomFieldController::class, 'feedData']);
 Route::get('/people/component/table/data', [CustomFieldController::class, 'getTaskData']);
-Route::get('/test', [CustomFieldController::class, 'generateFilterFields']);
+// Route::get('/test', [CustomFieldController::class, 'generateFilterFields']);
+Route::get('/dump', [CustomFieldController::class, 'dumpData']);
+Route::get('/test', function () {
+    return "Test";
+});

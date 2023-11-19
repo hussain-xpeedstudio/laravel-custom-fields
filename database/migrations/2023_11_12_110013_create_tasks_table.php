@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('status');
-            $table->json('customfield_data');
+            $table->json('custom_field_data');
             $table->timestamps();
         });
     }

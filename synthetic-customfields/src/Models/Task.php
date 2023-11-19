@@ -13,12 +13,8 @@ use SyntheticCustomFields\Models\CustomField;
 class Task extends Model
 {
     use HasFactory, Filterable, CustomFieldTrait;
-    protected   $filterFields = [];
-    public function __construct()
-    {
-        $this->generateModelAttributes();
-    }
-    public  $fillable_attribute = [
+
+    public  $fillableAttributes = [
         'title' => [
             'type' => self::TEXT,
             'label' => 'Title',
@@ -37,29 +33,25 @@ class Task extends Model
         'status' => [
             'type' => self::SELECT,
             'label' => 'Status',
-            'isMultiSelect' => TRUE
+            'isMultiSelect' => TRUE,
+            'validation' => [
+                "default" => "text"
+            ]
         ]
 
     ];
-
-    public  function generateModelAttributes()
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function getFilterFields()
     {
-        $data = CustomField::where('model', get_class($this))->project(['customfield_structure.columns' => 1])->get();
-        $transformedData = $data->flatMap(function ($item) {
-            return collect($item->customfield_structure['columns'])
-                ->mapWithKeys(function ($column) {
-                    return [
-                        'customfield_data.' . $column['name'] => [
-                            'type' => $column['type'],
-                            'label' => $column['label'],
-                            'optionsData' => $column['optionsData'] ?? '',
-                            'isMultiSelect' => $column['isMultiSelect'] ?? '',
-                            // Include other attributes you need here
-                        ]
-                    ];
-                });
-        })->toArray();
-        $this->fillable_attribute = array_merge($this->fillable_attribute, $transformedData);
-        $this->filterFields = array_keys($this->fillable_attribute);
+        $this->fillableAttribute = array_merge($this->fillableAttributes, $this->getCustomFields());
+    }
+    private function getCustomFields()
+    {
+        $customFieldStructure = CustomField::where('model', get_class($this))->first();
+        return $customFieldStructure ? $customFieldStructure->toArray()['custom_field_structure'] ?? [] : [];
     }
 }

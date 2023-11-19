@@ -17,13 +17,13 @@ class CustomFieldController extends Controller
     }
     public function feedData()
     {
-        // $data = new CustomField();
-        // $data->storeStructure();
+        $data = new CustomField();
+        $data->storeStructure();
         $data = new Task();
         $data->title = 'Laravel';
         $data->description = 'Laravel desc';
         $data->status = 'Reject';
-        $data->customfield_data = Config('result');
+        $data->custom_field_data = Config('result');
         $data->save();
         return $data;
     }
@@ -31,13 +31,18 @@ class CustomFieldController extends Controller
     {
         return Task::filter()->get();
     }
-    public function generateFilterFields()
+    // public function generateFilterFields()
+    // {
+    //     return Task::filter()->get();
+    // }
+    public function dumpData()
     {
-        // $data = new Task();
-        // $data = new Task();
-        //dd(Task::$filterFields);
+       // $task = new Task();
+        // dd($task->getCustomFields());
+        // return Task::filterFields($task->getFilterFields_WithCustomFields())->get();
+        // return Task::filterFields(['title', 'description', 'status', 'custom_field_data.tag'])->filter()->get();
+        
         return Task::filter()->get();
-        // $filterFields = array_merge(empty($data->fillable_attribute) ? [] : array_keys($data->fillable_attribute), array_keys($data->getCustomFieldStructureData()) ?? []);
-        // return Task::filterFields($filterFields)->get();
+       // dd($task->getFilterFields());
     }
 }

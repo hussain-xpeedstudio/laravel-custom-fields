@@ -13,9 +13,9 @@ class CustomField extends Model
     use HasFactory;
     use CustomFieldTrait;
     protected $fillable = [
-        'model', 'entity', 'entity_id', 'customfield_structure'
+        'model', 'entity', 'entity_id', 'custom_field_structure'
     ];
-    protected $collection = 'customfield_people';
+    protected $collection = 'custom_field_people';
     public  function setTable($tableName)
     {
         $this->table = $tableName;
